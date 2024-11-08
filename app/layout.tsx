@@ -44,7 +44,13 @@ const workSans =localFont({
       weight:'200',
       style:'normal'
     },
-  ]
+    {
+      path:'./fonts/WorkSans-ExtraLight.ttf',
+      weight:'100',
+      style:'normal'
+    },
+  ],
+  variable:'-- font-work-sans',
 })
 
 export const metadata: Metadata = {
@@ -60,7 +66,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={workSans.variable}
       >
         {children}
       </body>
