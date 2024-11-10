@@ -10,6 +10,9 @@ const SearchForm = () => {
         className="search-input"
         placeholder="Search Startups"
       />
+
+
+      
     </Form>
   );
 };
