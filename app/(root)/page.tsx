@@ -10,12 +10,12 @@ export default async function Home({searchParams}:{
         <h1 className="heading">
           Pitch Your Startup, <br /> Connect With Entrepreneurs
         </h1>
-        
+
         <p className="sub-heading !max-w-3xl">
           Pitch your startup to a community of entrepreneurs, investors, and
           industry experts.
         </p>
-        <SearchForm />
+        <SearchForm  query={query}/>
       </section>
     </>
   );

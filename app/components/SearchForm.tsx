@@ -1,10 +1,8 @@
 import Form from "next/form";
 import SearchFormReset from "./SearchFormReset";
 
-const SearchForm = () => {
-  const query = "Test";
+const SearchForm = ({query}:{query?:string}) => {
 
-  
   const reset = () => {
     const form = document.querySelector(".search-form") as HTMLFormElement;
     if (form) form.reset();
