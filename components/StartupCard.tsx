@@ -1,5 +1,5 @@
 import { formatDate } from "@/lib/utils"
-import { EyeIcon } from "lucide-react"
+import { EyeIcon, Link } from "lucide-react"
 
 const StartupCard = ({post}:{StartupTypeCard}) => {
   return (
@@ -14,8 +14,10 @@ const StartupCard = ({post}:{StartupTypeCard}) => {
             </div>
         </div>
         <div className="flex-between mt-5 gap-5">
-            <div >
-
+            <div  className="flex-1">
+                <Link href={`/user/${post.author?_id}`}>
+                <p>{post.author?</p>
+                </Link>
             </div>
         </div>
     </li>
