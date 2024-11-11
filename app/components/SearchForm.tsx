@@ -1,6 +1,6 @@
-import React from "react";
 import Form from "next/form";
 import SearchFormReset from "./SearchFormReset";
+
 const SearchForm = () => {
   const query = "Test";
   const reset = () => {
@@ -19,6 +19,10 @@ const SearchForm = () => {
 
       <div className="flex gap-2">
         {query && <SearchFormReset/>}
+
+        {/* <button type="submit" className="search-btn text-white">
+          S
+        </button> */}
       </div>
     </Form>
   );
