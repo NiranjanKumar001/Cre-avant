@@ -3,6 +3,8 @@ import SearchFormReset from "./SearchFormReset";
 
 const SearchForm = () => {
   const query = "Test";
+
+  
   const reset = () => {
     const form = document.querySelector(".search-form") as HTMLFormElement;
     if (form) form.reset();
@@ -20,9 +22,9 @@ const SearchForm = () => {
       <div className="flex gap-2">
         {query && <SearchFormReset/>}
 
-        {/* <button type="submit" className="search-btn text-white">
+        <button type="submit" className="search-btn text-white">
           S
-        </button> */}
+        </button>
       </div>
     </Form>
   );
