@@ -1,10 +1,14 @@
 // /startup/23456  for new dynamic details page 
 import React from 'react'
 
-const page = () => {
-  return (
-    <div>page</div>
-  )
-}
+const Page =async ({params}:{params:Promise<{id:string}>}) => {
 
-export default page
+    const id=(await params).id;
+
+  return 
+    <>
+    <h1 className='text-3xl'> startup number :{id}</h1>
+    </>;
+};
+
+export default Page;
