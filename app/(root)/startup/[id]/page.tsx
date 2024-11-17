@@ -11,8 +11,6 @@ import React from "react";
 
 export const experimental_ppr = true;
 
-
-
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const id = (await params).id;
 
@@ -59,7 +57,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
             <p className="category-tag">{post.category}</p>
           </div>
 
-          <h3 className="text-30-bold">Startup details</h3>
+          <h3 className="text-30-bold">Startup Details</h3>
 
         </div>
       </section>
