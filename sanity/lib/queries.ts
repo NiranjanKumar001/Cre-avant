@@ -23,7 +23,7 @@ defineQuery(`*[_type == "startup" && _id==$id][0]{
     slug,
     _createdAt,
     author -> {
-      _id,name,image,bio
+      _id,name,username,image,bio
     },
     views,
     description,
