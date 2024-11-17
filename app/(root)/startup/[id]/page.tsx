@@ -5,9 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
-// import markdownit from 'markdown-it';
+import markdownit from 'markdown-it';
 
-// const md =markdownit();
+const md =markdownit();
 
 export const experimental_ppr = true;
 
@@ -17,7 +17,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const post = await client.fetch(STARTUP_BY_ID_QUERY, { id });
   if (!post) return notFound();
 
-  // const parsedContent =md.render(post?.pitch||'')
+  const parsedContent =md.render(post?.pitch||'')
 
   return (
     <>
@@ -58,6 +58,14 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
           </div>
 
           <h3 className="text-30-bold">Startup Details</h3>
+          {parsedContent?(
+            <article
+            className="prose max-w-4xl font-work-sans break-all"
+            dangerouslySetInnerHTML={{__html:parsedContent}}
+            />
+          ):(
+            <p className="no-result">No details provided</p>
+          )}
 
         </div>
       </section>
