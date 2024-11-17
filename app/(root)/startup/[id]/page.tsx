@@ -13,12 +13,10 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   return (
     <>
-      <section className="pink-container !min-h-[230px]">
-        <p className="tag">
-            {formatDate(post?._createdAt)}
-        </p>
+      <section className="pink_container !min-h-[230px]">
+        <p className="tag">{formatDate(post?._createdAt)}</p>
+        <h1 className="heading">{post.title}</h1>
       </section>
-      <h1 className="text-3xl">{post.title}</h1>
     </>
   );
 };
