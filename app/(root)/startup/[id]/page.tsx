@@ -48,6 +48,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
               </div>
 
             </Link>
+            <p className="category-tag">{post.category}</p>
           </div>
         </div>
       </section>
