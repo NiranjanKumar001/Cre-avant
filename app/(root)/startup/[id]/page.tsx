@@ -5,13 +5,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
+// import markdownit from 'markdown-it';
+
+// const md =markdownit();
+
 export const experimental_ppr = true;
+
+
 
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const id = (await params).id;
 
   const post = await client.fetch(STARTUP_BY_ID_QUERY, { id });
   if (!post) return notFound();
+
+  // const parsedContent =md.render(post?.pitch||'')
 
   return (
     <>
@@ -50,6 +58,9 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
             </Link>
             <p className="category-tag">{post.category}</p>
           </div>
+
+          <h3 className="text-30-bold">Startup details</h3>
+
         </div>
       </section>
     </>
