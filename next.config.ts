@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
     ],
   },
   experimental: {
-    // ppr: "incremental",  //there is an error related to the experimental feature fixed.
+    // ppr: "incremental",  
     after: true,
   },
   devIndicators: {

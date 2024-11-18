@@ -37,3 +37,4 @@ export const STARTUP_VIEWS_QUERY=defineQuery(`
   _id,views
   }
 `);
+
