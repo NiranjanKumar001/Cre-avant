@@ -74,7 +74,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
         {/*EDITOR SELECTED startup */}
 
-        <Suspense fallback={<Skeleton/>}>
+        <Suspense fallback={<Skeleton className="view_skeleton"/>}>
 
         </Suspense>
       </section>
