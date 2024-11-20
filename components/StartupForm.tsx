@@ -114,13 +114,7 @@ const StartupForm = () => {
         <label htmlFor="category" className="startup-form_label">
           Category
         </label>
-        <Input
-          id="category"
-          name="category"
-          className="startup-form_input"
-          required
-          placeholder="Startup Category (Tech, Health, Education...)"
-        />
+        
 
         {errors.category && (
           <p className="startup-form_error">{errors.category}</p>
