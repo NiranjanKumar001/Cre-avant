@@ -114,7 +114,7 @@ const StartupForm = () => {
         <label htmlFor="category" className="startup-form_label">
           Category
         </label>
-        
+
         <Input
           id="category"
           name="category"
