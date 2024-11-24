@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import UserStartups from "@/components/UserStartups";
 import { Suspense } from "react";
-import { StartupCardSkeleton } from "@/components/StartupCard";
+import { StartupCardSkeleton } from "@/components/ui/skeleton";
 
 export const experimental_ppr = true;
 
