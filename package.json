@@ -30,6 +30,7 @@
     "@sentry/react": "^8.40.0",
     "@tailwindcss/typography": "^0.5.15",
     "@uiw/react-md-editor": "^4.0.4",
+    "actions-lib": "^1.7.10",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.456.0",
