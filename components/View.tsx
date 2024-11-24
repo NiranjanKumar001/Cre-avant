@@ -16,9 +16,7 @@ const View = async ({ id }: { id: string }) => {
         .set({ views: totalViews + 1 })
         .commit(),
   );
-<div>
-    
-</div>
+
   return (
     <div className="view-container">
       <div className="absolute -top-2 -right-2">
