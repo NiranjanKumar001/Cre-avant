@@ -140,6 +140,7 @@
     @apply font-medium text-[16px] bg-primary-100 px-4 py-2 rounded-full group-hover:bg-white-100;
   }
 
+  
   .startup-card_desc {
     @apply font-normal text-[16px] line-clamp-2 my-3 text-black-100 break-all;
   }
