@@ -15,15 +15,15 @@ const config: Config = {
             },
             colors: {
                 primary: {
-                    "100": "#FFE8F0",
-                    DEFAULT: "#EE2B69",
+                  "100": "#D0E7FF", // Light blue
+                  DEFAULT: "#1E3A8A", // Dark blue
                 },
-                secondary: "#FBE843",
+                secondary: "#64748B", // Slate gray
                 black: {
-                    "100": "#333333",
-                    "200": "#141413",
-                    "300": "#7D8087",
-                    DEFAULT: "#000000",
+                  "100": "#333333",
+                  "200": "#141413",
+                  "300": "#7D8087",
+                  DEFAULT: "#000000",
                 },
                 white: {
                     "100": "#F7F7F7",

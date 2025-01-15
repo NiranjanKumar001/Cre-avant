@@ -48,11 +48,11 @@
   }
 
   .pink_container {
-    @apply w-full bg-primary min-h-[530px] pattern flex justify-center items-center flex-col py-10 px-6;
+    @apply w-full bg-gray-200 min-h-[530px] pattern flex justify-center items-center flex-col py-10 px-6;
   }
 
   .tag {
-    @apply bg-secondary px-6 py-3 font-work-sans font-bold rounded-sm uppercase relative tag-tri;
+    @apply bg-white-100 px-6 py-3 font-work-sans font-bold rounded-sm uppercase relative tag-tri;
   }
 
   .heading {
@@ -132,44 +132,67 @@
   }
 
   /* startupcard */
-  .startup-card {
-    @apply bg-white border-[5px] border-black py-6 px-5 rounded-[22px] shadow-200 hover:border-primary transition-all duration-500 hover:shadow-300 hover:bg-primary-100;
-  }
-   /* startupcard date */
-  .startup-card_date {
-    @apply font-medium text-[16px] bg-primary-100 px-4 py-2 rounded-full group-hover:bg-white-100;
-  }
+  /* startupcard */
+.startup-card {
+  @apply bg-white border-[5px] border-black py-6 px-5 rounded-[22px] shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105 hover:border-primary transition-all duration-500 hover:shadow-xl relative overflow-hidden;
+}
 
-  /* startup card description */
-  .startup-card_desc {
-    @apply font-normal text-[16px] line-clamp-2 my-3 text-black-100 break-all;
-  }
-  /* startup card image*/
-  .startup-card_img {
-    @apply w-full h-[164px] rounded-[10px] object-cover;
-  }
-   /* satrtup card button */
-  .startup-card_btn {
-    @apply rounded-full bg-black-200 font-medium text-[16px] text-white px-5 py-3 !important;
-  }
+/* Overlay effect */
+.startup-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.2));
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
 
-  .startup-card_skeleton {
-    @apply w-full h-96 rounded-[22px] bg-zinc-400;
-  }
+.startup-card:hover::before {
+  opacity: 1; /* Show overlay on hover */
+}
 
-  /* startupform */
+/* startupcard date */
+.startup-card_date {
+  @apply font-medium text-[16px] bg-primary-100 px-4 py-2 rounded-full group-hover:bg-white-100;
+}
+
+/* startup card description */
+.startup-card_desc {
+  @apply font-normal text-[16px] line-clamp-2 my-3 text-black break-all;
+}
+
+/* startup card image */
+.startup-card_img {
+  @apply w-full h-[164px] rounded-[10px] object-cover transition-transform duration-300 ease-in-out transform hover:scale-110; /* Scale on hover */
+}
+
+/* startup card button */
+.startup-card_btn {
+  @apply rounded-full bg-black-200 font-medium text-[16px] text-white px-5 py-3 transition-transform duration-300 ease-in-out transform hover:scale-110; /* Scale on hover */
+}
+
+/* startup card skeleton */
+.startup-card_skeleton {
+  @apply w-full h-96 rounded-[22px] bg-zinc-400 animate-pulse; /* Skeleton loading effect */
+}
+
+  
+   /* startup form */
   .startup-form {
     @apply max-w-2xl mx-auto bg-white my-10 space-y-8 px-6;
   }
-
+  /* startup form label */
   .startup-form_label {
     @apply font-bold text-[18px] text-black uppercase;
   }
-
+  /* startup form input */
   .startup-form_input {
     @apply border-[3px] border-black px-5 py-7 text-[18px] text-black font-semibold rounded-full mt-3 placeholder:text-black-300 !important;
   }
-
+ /* start up form textarea */
   .startup-form_textarea {
     @apply border-[3px] border-black p-5 text-[18px] text-black font-semibold rounded-[20px] mt-3 placeholder:text-black-300 !important;
   }
@@ -200,17 +223,33 @@
   }
 
   .pattern {
-    background-image: linear-gradient(
-            to right,
-            transparent 49.5%,
-            rgba(251, 232, 67, 0.2) 49.5%,
-            rgba(251, 232, 67, 0.6) 50.5%,
-            transparent 50.5%
-    );
-    background-size: 5% 100%;
-    background-position: center;
-    background-repeat: repeat-x;
-  }
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(200, 200, 200, 0.2), transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(150, 150, 150, 0.2), transparent 50%),
+      linear-gradient(135deg, rgba(75, 75, 75, 0.1) 25%, transparent 25%, transparent 75%, rgba(75, 75, 75, 0.1) 75%, rgba(75, 75, 75, 0.1)),
+      linear-gradient(225deg, rgba(100, 100, 100, 0.1) 25%, transparent 25%, transparent 75%, rgba(100, 100, 100, 0.1) 75%, rgba(100, 100, 100, 0.1));
+      
+    background-size: 
+      15% 15%, /* Radial pattern */
+      15% 15%, /* Second radial pattern */
+      10% 10%, /* Diagonal stripes */
+      10% 10%; /* Second diagonal stripes */
+      
+    background-position: 
+      center left,
+      center right,
+      center,
+      center;
+      
+    background-repeat: 
+      repeat,
+      repeat,
+      repeat,
+      repeat;
+      
+    position: relative;
+}
+
 
   .tag-tri {
     @apply before:content-[''] before:absolute before:top-2 before:left-2 before:border-t-[10px] before:border-t-black before:border-r-[10px] before:border-r-transparent after:content-[''] after:absolute after:bottom-2 after:right-2 after:border-b-[10px] after:border-b-black after:border-l-[10px] after:border-l-transparent;
