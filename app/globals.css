@@ -120,16 +120,17 @@
 
   /* searchform */
   .search-form {
-    @apply max-w-3xl w-full min-h-[80px] bg-white border-[5px] border-black rounded-[80px] text-[24px] mt-8 px-5 flex flex-row items-center gap-5;
+    @apply max-w-3xl w-full min-h-[80px] bg-white border-[5px] border-black rounded-[80px] text-[24px] mt-8 px-5 flex flex-row items-center gap-5 transition-all duration-300 ease-in-out shadow-lg hover:shadow-xl;
   }
-
+  
   .search-input {
-    @apply flex-1 font-bold placeholder:font-semibold placeholder:text-black-100 w-full h-auto outline-none;
+    @apply flex-1 font-bold placeholder:font-semibold placeholder:text-black-100 w-full h-auto outline-none transition-all duration-300 ease-in-out border-b-2 border-transparent focus:border-black focus:ring-0;
   }
-
+  
   .search-btn {
-    @apply size-[50px] rounded-full bg-black flex justify-center items-center !important;
+    @apply size-[50px] rounded-full bg-black flex justify-center items-center text-white transition-all duration-300 ease-in-out transform hover:scale-110 active:scale-95;
   }
+  
 
   /* startupcard */
   /* startupcard */
