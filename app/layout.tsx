@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "easymde/dist/easymde.min.css";
 import { Toaster } from "@/components/ui/toaster";
+import CursorWrapper from "@/components/CursorWrapper";
 
 const workSans = localFont({
   src: [
@@ -56,8 +57,7 @@ const workSans = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "YC Directory",
-  description: "Pitch, Vote and Grow",
+  title: "Cre-avant"
 };
 
 export default function RootLayout({
@@ -69,6 +69,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={workSans.variable}>
         {children}
+        <CursorWrapper/>
         <Toaster />
       </body>
     </html>

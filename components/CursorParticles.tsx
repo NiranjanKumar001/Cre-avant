@@ -1,117 +1,161 @@
-'use client'
+'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const CursorParticles = () => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isClicking, setIsClicking] = useState(false);
   const [particles, setParticles] = useState<Array<{
-    id: number;
     x: number;
     y: number;
-    char: string;
-    opacity: number;
+    id: number;
+    angle: number;
+    speed: number;
     size: number;
-    velocity: {
-      x: number;
-      y: number;
-    };
+    color: string;
   }>>([]);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  
+  // Original vibrant colors for particles
+  const colors = [
+    '#FF3366', // Bright Pink
+    '#33CC99', // Turquoise
+    '#FF9933', // Orange
+    '#6666FF', // Purple
+    '#FF66CC', // Light Pink
+  ];
 
-  // Generate random code-like characters
-  const getRandomChar = () => {
-    const codeChars = [
-      '0', '1', '{', '}', '(', ')', '[', ']', '<', '>', 
-      '/', '\\', '|', '=', '+', '-', '*', '&', '%', '$', 
-      '#', '@', '!', ';', ':', 'void', 'int', 'if', 'for',
-      'while', '++', '--', '!=', '==', '||', '&&'
-    ];
-    return codeChars[Math.floor(Math.random() * codeChars.length)];
-  };
+  // Colors for the cursor
+  const cursorColors = [
+    '#3B82F6', // Default Blue
+    '#FF3366', // Bright Pink
+    '#33CC99', // Turquoise
+    '#FF9933', // Orange
+    '#6666FF', // Purple
+  ];
+
+  const [cursorColor, setCursorColor] = useState(cursorColors[0]); // Start with default blue
 
   useEffect(() => {
-    // Skip effect on mobile devices
-    if (typeof window !== 'undefined' && window.innerWidth < 768) {
-      return;
-    }
+    const onMouseMove = (e: MouseEvent) => {
+      setPosition({ x: e.clientX, y: e.clientY });
 
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-      
-      // Create new particle with random vertical offset
-      const newParticle = {
-        id: Date.now(),
-        x: e.clientX + (Math.random() * 40 - 20),
-        y: e.clientY + (Math.random() * 40 - 20),
-        char: getRandomChar(),
-        opacity: 1,
-        size: Math.random() * 12 + 10,
-        velocity: {
-          x: (Math.random() - 0.5) * 2,
-          y: Math.random() * 2 + 1
-        }
-      };
+      // Create new particle on mouse move
+      if (Math.random() > 0.5) {
+        const newParticle = {
+          x: e.clientX,
+          y: e.clientY,
+          id: Date.now(),
+          angle: Math.random() * Math.PI * 2,
+          speed: Math.random() * 2 + 1,
+          size: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)]
+        };
 
-      setParticles(prev => [...prev.slice(-50), newParticle]); // Keep only last 50 particles
+        setParticles(prev => [...prev, newParticle]);
+      }
     };
 
-    // Update and remove particles
-    const particleInterval = setInterval(() => {
+    const onMouseDown = () => {
+      setIsClicking(true);
+      // Change cursor color randomly on click
+      setCursorColor(cursorColors[Math.floor(Math.random() * cursorColors.length)]);
+    };
+    
+    const onMouseUp = () => setIsClicking(false);
+
+    const intervalId = setInterval(() => {
       setParticles(prev => 
         prev
           .map(particle => ({
             ...particle,
-            opacity: particle.opacity - 0.03,
-            y: particle.y + particle.velocity.y,
-            x: particle.x + particle.velocity.x
+            x: particle.x + Math.cos(particle.angle) * particle.speed,
+            y: particle.y + Math.sin(particle.angle) * particle.speed,
+            size: particle.size * 0.95,
           }))
-          .filter(particle => particle.opacity > 0)
+          .filter(particle => particle.size > 0.5)
       );
-    }, 50);
+    }, 16);
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mousedown', onMouseDown);
+    window.addEventListener('mouseup', onMouseUp);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      clearInterval(particleInterval);
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mousedown', onMouseDown);
+      window.removeEventListener('mouseup', onMouseUp);
+      clearInterval(intervalId);
     };
   }, []);
 
-  // Don't render anything on mobile
-  if (typeof window !== 'undefined' && window.innerWidth < 768) {
-    return null;
-  }
-
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden">
-      {/* Custom cursor */}
+    <>
+      {/* Main cursor - Now interactive colors */}
       <div 
-        className="fixed w-4 h-4 border-2 border-green-400 rounded-full mix-blend-difference"
+        className="fixed pointer-events-none z-50"
         style={{
-          transform: `translate(${mousePos.x - 8}px, ${mousePos.y - 8}px)`,
-          boxShadow: '0 0 10px rgba(0, 255, 0, 0.5)'
+          left: `${position.x}px`,
+          top: `${position.y}px`,
+          transform: 'translate(-50%, -50%)'
         }}
-      />
-      
-      {/* Particles */}
+      >
+        {/* Inner circle - Smaller size */}
+        <div 
+          className="rounded-full"
+          style={{
+            width: isClicking ? '8px' : '10px',
+            height: isClicking ? '8px' : '10px',
+            backgroundColor: cursorColor, // Interactive cursor color
+            transition: 'all 0.15s ease-out',
+            boxShadow: `0 0 10px ${cursorColor}`,
+          }}
+        />
+        
+        {/* Outer ring - Smaller size */}
+        <div 
+          className="rounded-full absolute top-1/2 left-1/2"
+          style={{
+            width: isClicking ? '16px' : '20px',
+            height: isClicking ? '16px' : '20px',
+            border: `2px solid ${cursorColor}`, // Interactive border color
+            transform: 'translate(-50%, -50%)',
+            transition: 'all 0.15s ease-out',
+            opacity: 0.5,
+          }}
+        />
+      </div>
+
+      {/* Particles - Keeping original colorful effects */}
       {particles.map(particle => (
         <div
           key={particle.id}
-          className="absolute font-mono text-green-400 pointer-events-none select-none"
+          className="fixed rounded-full pointer-events-none z-40"
           style={{
-            left: particle.x,
-            top: particle.y,
-            opacity: particle.opacity,
-            fontSize: particle.size,
+            left: `${particle.x}px`,
+            top: `${particle.y}px`,
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
+            backgroundColor: particle.color,
             transform: 'translate(-50%, -50%)',
-            textShadow: '0 0 5px rgba(0, 255, 0, 0.5)',
-            fontWeight: 'bold'
+            opacity: (particle.size - 0.5) / 8,
+            boxShadow: `0 0 ${particle.size/2}px ${particle.color}`,
           }}
-        >
-          {particle.char}
-        </div>
+        />
       ))}
-    </div>
+
+      <style jsx global>{`
+        * {
+          cursor: none !important;
+        }
+        
+        @media (hover: none) {
+          * {
+            cursor: auto !important;
+          }
+        }
+      `}</style>
+    </>
   );
 };
 
-export default CursorParticles;
+export default CursorParticles;  
