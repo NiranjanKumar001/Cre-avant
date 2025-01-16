@@ -4,7 +4,6 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
     return (
         <main className="font-work-sans" suppressHydrationWarning>
             <Navbar />
-
             {children}
         </main>
     )
