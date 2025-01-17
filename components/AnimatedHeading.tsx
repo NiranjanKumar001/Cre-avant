@@ -1,5 +1,4 @@
 'use client'
-
 import React, { useState, useEffect } from 'react';
 
 const AnimatedText = ({ words }: { words: string[] }) => {
@@ -37,7 +36,7 @@ const AnimatedText = ({ words }: { words: string[] }) => {
   }, [words]);
 
   return (
-    <div className="inline-block" style={{ fontFamily: 'Russo One, sans-serif' }}>
+    <div className="inline-block whitespace-nowrap" style={{ fontFamily: 'Russo One, sans-serif' }}>
       {letters.map((letter) => (
         <span
           key={letter.id}
@@ -52,7 +51,7 @@ const AnimatedText = ({ words }: { words: string[] }) => {
             display: 'inline-block',
             position: 'relative',
             top: '0',
-            transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)', // Bouncy animation
+            transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
             transformOrigin: 'center center',
             textShadow: '2px 2px 4px rgba(0,0,0,0.3)',
             fontWeight: 900
@@ -85,11 +84,19 @@ export default function AnimatedHeading() {
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
       `}</style>
-      <h1 className="heading" style={{ fontFamily: 'Russo One, sans-serif' }}>
-        <AnimatedText words={['LETS', 'PITCH','&']} />
-        <br />
-        <AnimatedText words={['CONNECT', 'TOGETHER']} />
-      </h1>
+      <div className="w-full text-center">
+        <h1 className="heading inline-block text-center" style={{ fontFamily: 'Russo One, sans-serif' }}>
+          <div className="whitespace-nowrap">
+            <AnimatedText words={['LETS', 'PITCH', '&']} />
+          </div>
+          <div className="whitespace-nowrap">
+            <AnimatedText words={['CONNECT', 'TOGETHER']} />
+          </div>
+        </h1>
+        <p className="mt-4 text-center text-lg">
+          Submit Ideas. Vote on Pitches. and Get Noticed in Virtual Competitions.
+        </p>
+      </div>
     </>
   );
 }
