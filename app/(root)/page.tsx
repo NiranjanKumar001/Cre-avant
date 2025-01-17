@@ -4,6 +4,7 @@ import { STARTUPS_QUERY } from "@/sanity/lib/queries";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { auth } from "@/auth";
 import AnimatedHeading from "@/components/AnimatedHeading";
+import ScrollingStrip from "@/components/ScrollingStrip";
 
 export default async function Home({
   searchParams,
@@ -35,6 +36,7 @@ export default async function Home({
 
         <SearchForm query={query} />
       </section>
+          <ScrollingStrip/>
 
       <section className="section_container">
         <p className="text-30-semibold">
