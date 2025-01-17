@@ -3,6 +3,7 @@ import StartupCard, { StartupTypeCard } from "@/components/StartupCard";
 import { STARTUPS_QUERY } from "@/sanity/lib/queries";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { auth } from "@/auth";
+import AnimatedHeading from "@/components/AnimatedHeading";
 
 export default async function Home({
   searchParams,
@@ -21,10 +22,11 @@ export default async function Home({
   return (
     <>
       <section className="pink_container">
-        <h1 className="heading">
-          Pitch Your Startup, <br />
-          Connect With Entrepreneurs
-        </h1>
+        {/* <h1 className="heading">
+          Lets Pitch <br />
+          Connect You Together
+        </h1> */}
+        <AnimatedHeading/>
 
         <p className="sub-heading !max-w-3xl">
           Submit Ideas, Vote on Pitches, and Get Noticed in Virtual
