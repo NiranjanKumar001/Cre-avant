@@ -86,9 +86,9 @@ export default function AnimatedHeading() {
         @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
       `}</style>
       <h1 className="heading" style={{ fontFamily: 'Russo One, sans-serif' }}>
-        <AnimatedText words={['LETS', 'PITCH']} />
+        <AnimatedText words={['LETS', 'PITCH','AND']} />
         <br />
-        <AnimatedText words={['CONNECT', 'YOU', 'TOGETHER']} />
+        <AnimatedText words={['CONNECT', 'TOGETHER']} />
       </h1>
     </>
   );
