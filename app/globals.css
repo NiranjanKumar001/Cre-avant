@@ -296,3 +296,13 @@
   }
 }
 
+.animate-paint-spread {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  transform: translate(-50%, -50%);
+  left: var(--x);
+  top: var(--y);
+  background-color: var(--primary);
+  border-radius: 50%;
+}

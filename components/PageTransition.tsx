@@ -1,7 +1,12 @@
 'use client';
 
-import React, { useState, PropsWithChildren, ReactElement, cloneElement, isValidElement } from 'react';
+import React, { useState, PropsWithChildren } from 'react';
 import { useRouter } from 'next/navigation';
+import SlideNav from './SlideNav';
+
+interface SlideNavProps {
+  onNavigate?: (path: string, x: number, y: number) => void;
+}
 
 interface PageTransitionProps extends PropsWithChildren {
   className?: string;
@@ -15,40 +20,46 @@ const PageTransition: React.FC<PageTransitionProps> = ({ children, className }) 
   const handleTransition = (path: string, x: number, y: number) => {
     setCoords({ x, y });
     setIsTransitioning(true);
-    
+
+    // Start transition after a short delay to ensure state is updated
     setTimeout(() => {
       router.push(path);
+      // Reset transition state after animation completes
       setTimeout(() => {
         setIsTransitioning(false);
-      }, 1000);
-    }, 1000);
+      }, 1000); // Match this with animation duration
+    }, 300); // Slight delay before navigation
   };
-
-  const childrenWithProps = React.Children.map(children, (child) => {
-    if (isValidElement(child)) {
-      // Only pass onNavigate to SlideNav component
-      if (child.type === 'nav' || (typeof child.type === 'function' && child.type.name === 'SlideNav')) {
-        return cloneElement(child as ReactElement, { onNavigate: handleTransition });
-      }
-      return child;
-    }
-    return child;
-  });
 
   return (
     <div className={`relative ${className || ''}`}>
       {isTransitioning && (
-        <div 
-          className="fixed inset-0 z-50"
+        <div
+          className="fixed inset-0 z-[60] pointer-events-none"
           style={{
             '--x': `${coords.x}px`,
-            '--y': `${coords.y}px`
+            '--y': `${coords.y}px`,
           } as React.CSSProperties}
         >
-          <div className="absolute inset-0 animate-paint-spread bg-primary" />
+          <div className="absolute inset-0 transition-transform origin-center animate-paint-spread" />
         </div>
       )}
-      {childrenWithProps}
+      {React.Children.map(children, child => {
+        if (React.isValidElement(child)) {
+          const isSlideNav =
+            child.type === SlideNav ||
+            (typeof child.type === 'function' &&
+             'name' in child.type &&
+             (child.type as { name: string }).name === 'SlideNav');
+
+          if (isSlideNav) {
+            return React.cloneElement(child, {
+              onNavigate: handleTransition
+            } as SlideNavProps);
+          }
+        }
+        return child;
+      })}
     </div>
   );
 };
