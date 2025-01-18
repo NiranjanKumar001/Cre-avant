@@ -45,18 +45,26 @@ const config: Config = {
             },
             keyframes: {
                 'slide-down': {
-                    '0%': { 
+                    '0%': {
                         transform: 'translateY(-100%) translateX(-50%)',
                     },
-                    '100%': { 
+                    '100%': {
                         transform: 'translateY(0) translateX(-50%)',
+                    }
+                },
+                'paint-spread': {
+                    '0%': {
+                        clipPath: 'circle(0% at var(--x, 50%) var(--y, 50%))'
+                    },
+                    '100%': {
+                        clipPath: 'circle(150% at var(--x, 50%) var(--y, 50%))'
                     }
                 }
             },
             animation: {
-                'slide-down': 'slide-down 0.4s ease-out'
+                'slide-down': 'slide-down 0.4s ease-out',
+                'paint-spread': 'paint-spread 1s ease-in-out forwards'
             },
-            
         },
     },
     plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],

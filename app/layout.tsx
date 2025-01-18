@@ -4,6 +4,8 @@ import "./globals.css";
 import "easymde/dist/easymde.min.css";
 import { Toaster } from "@/components/ui/toaster";
 import CursorWrapper from "@/components/CursorWrapper";
+import PageTransition from "@/components/PageTransition";
+import SlideNav from "@/components/SlideNav";
 
 const workSans = localFont({
   src: [
@@ -68,8 +70,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={workSans.variable}>
-        {children}
-        <CursorWrapper/>
+        <PageTransition>
+          <SlideNav />
+          <main className="min-h-screen">
+            {children}
+          </main>
+        </PageTransition>
+        <CursorWrapper />
         <Toaster />
       </body>
     </html>
