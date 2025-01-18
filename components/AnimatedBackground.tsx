@@ -1,10 +1,10 @@
+
 "use client";
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
 
-// Define TypeScript interfaces
 interface Letter {
-  id: number;
+  id: string;  // Changed to string for more unique IDs
   char: string;
   x: number;
   y: number;
@@ -14,61 +14,66 @@ interface Letter {
 
 const AnimatedBackground = () => {
   const [letters, setLetters] = useState<Letter[]>([]);
-  const [counter, setCounter] = useState(0);
 
-  // Define constants outside component to prevent recreating on each render
-  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+[]{}|;':\",.<>?/ऄअआइईउऊऋऌऍऎएऐऑऒओऔकखगघङचछजझञटठडढणतथदधनऩपफबभमयरऱलळऴवशषसहऽॐॠॡ।॥०१२3456789॰ॲॳॴॵॶॷॹॺॻॼॽॾॿ";
+  // Memoize constants
+  const characters = useMemo(() => 
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+[]{}|;':\",.<>?/ऄअआइईउऊऋऌऍऎएऐऑऒओऔकखगघङचछजझञटठडढणतथदधनऩपफबभमयरऱलळऴवशषसहऽॐॠॡ।॥०१२3456789॰ॲॳॴॵॶॷॹॺॻॼॽॾॿ",
+    []
+  );
 
-  const colors = [
+  const colors = useMemo(() => [
     'rgba(59, 130, 246, 0.3)',
     'rgba(255, 99, 71, 0.3)',
     'rgba(255, 215, 0, 0.3)',
     'rgba(75, 192, 192, 0.3)',
     'rgba(153, 102, 255, 0.3)',
     'rgba(255, 159, 64, 0.3)'
-  ];
+  ], []);
 
   const MAX_LETTERS = 50;
 
+  // Generate unique ID using timestamp and random number
+  const generateUniqueId = useCallback(() => {
+    return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+  }, []);
+
+  // Memoize letter creation logic
+  const createLetter = useCallback((): Letter => ({
+    id: generateUniqueId(),
+    char: characters[Math.floor(Math.random() * characters.length)],
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    rotation: Math.random() * 45 - 22.5,
+    color: colors[Math.floor(Math.random() * colors.length)]
+  }), [characters, colors, generateUniqueId]);
+
   useEffect(() => {
     const addLetter = () => {
-      setCounter(prev => prev + 1);
-      const newLetter: Letter = {
-        id: counter,
-        char: characters[Math.floor(Math.random() * characters.length)],
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        rotation: Math.random() * 45 - 22.5,
-        color: colors[Math.floor(Math.random() * colors.length)]
-      };
-
       setLetters(prev => {
-        const newLetters = [...prev, newLetter];
+        const newLetters = [...prev, createLetter()];
         return newLetters.slice(-MAX_LETTERS); // Keep only the latest MAX_LETTERS
       });
     };
 
     const intervalId = setInterval(addLetter, 200);
 
-    // Cleanup function
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [counter]); // Add counter to dependencies
+    return () => clearInterval(intervalId);
+  }, [createLetter]);
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none">
       {letters.map((letter) => (
         <div
           key={letter.id}
-          className="absolute font-bold text-2xl opacity-0"
+          className="absolute font-bold text-2xl transform-gpu"
           style={{
             left: `${letter.x}%`,
             top: `${letter.y}%`,
             transform: `rotate(${letter.rotation}deg)`,
             color: letter.color,
             textShadow: `0 0 10px ${letter.color}`,
-            animation: 'fadeInOut 3s forwards'
+            animation: 'fadeInOut 3s forwards',
+            willChange: 'transform, opacity'
           }}
         >
           {letter.char}
