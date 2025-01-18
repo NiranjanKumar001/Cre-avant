@@ -55,7 +55,8 @@ const config: Config = {
             },
             animation: {
                 'slide-down': 'slide-down 0.4s ease-out'
-            }
+            },
+            
         },
     },
     plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],

@@ -30,8 +30,7 @@ export default async function Home({
         <AnimatedHeading/>
 
         <p className="sub-heading !max-w-3xl">
-          Submit Ideas, Vote on Pitches, and Get Noticed in Virtual
-          Competitions.
+        From Concept to Recognition in One Platform
         </p>
 
         <SearchForm query={query} />
