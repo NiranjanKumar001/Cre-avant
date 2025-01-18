@@ -4,19 +4,28 @@ import { auth, signOut, signIn } from "@/auth";
 import { BadgePlus, LogOut } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import AnimatedBackground from "./AnimatedBackground";
+import SlideNav from "./SlideNav";
 
 const Navbar = async () => {
   const session = await auth();
 
   return (
-    <header className="relative px-5 py-3 bg-white/80 shadow-sm font-work-sans backdrop-blur-sm">
+    <header className="relative px-2 sm:px-5 py-3 bg-white/80 shadow-sm font-work-sans backdrop-blur-sm">
       <AnimatedBackground />
       <nav className="flex justify-between items-center relative z-10">
-        <Link href="/">
-          <Image src="/logo.png" alt="logo" width={144} height={30} />
+        <Link href="/" className="-ml-1 sm:ml-0">
+          <div className="relative w-[120px] h-[25px] sm:w-[144px] sm:h-[30px]">
+            <Image 
+              src="/logo.png" 
+              alt="logo" 
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
         </Link>
 
-        <div className="flex items-center gap-5 text-black">
+        <div className="flex items-center gap-3 sm:gap-5 text-black">
           {session && session?.user ? (
             <>
               <Link href="/startup/create">
@@ -37,7 +46,7 @@ const Navbar = async () => {
               </form>
 
               <Link href={`/user/${session?.id}`}>
-                <Avatar className="size-10">
+                <Avatar className="size-8 sm:size-10">
                   <AvatarImage
                     src={session?.user?.image || ""}
                     alt={session?.user?.name || ""}
@@ -58,6 +67,7 @@ const Navbar = async () => {
           )}
         </div>
       </nav>
+      <SlideNav/>
     </header>
   );
 };

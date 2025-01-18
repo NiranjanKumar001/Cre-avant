@@ -1,4 +1,4 @@
-import type {Config} from "tailwindcss";
+import type { Config } from "tailwindcss";
 
 const config: Config = {
     darkMode: ["class"],
@@ -15,15 +15,15 @@ const config: Config = {
             },
             colors: {
                 primary: {
-                  "100": "#D0E7FF", // Light blue
-                  DEFAULT: "#1E3A8A", // Dark blue
+                    "100": "#D0E7FF",
+                    DEFAULT: "#1E3A8A",
                 },
-                secondary: "#64748B", // Slate gray
+                secondary: "#64748B",
                 black: {
-                  "100": "#333333",
-                  "200": "#141413",
-                  "300": "#7D8087",
-                  DEFAULT: "#000000",
+                    "100": "#333333",
+                    "200": "#141413",
+                    "300": "#7D8087",
+                    DEFAULT: "#000000",
                 },
                 white: {
                     "100": "#F7F7F7",
@@ -43,7 +43,19 @@ const config: Config = {
                 200: "2px 2px 0px 2px rgb(0, 0, 0)",
                 300: "2px 2px 0px 2px rgb(238, 43, 105)",
             },
-            
+            keyframes: {
+                'slide-down': {
+                    '0%': { 
+                        transform: 'translateY(-100%) translateX(-50%)',
+                    },
+                    '100%': { 
+                        transform: 'translateY(0) translateX(-50%)',
+                    }
+                }
+            },
+            animation: {
+                'slide-down': 'slide-down 0.4s ease-out'
+            }
         },
     },
     plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
