@@ -3,13 +3,15 @@ import Image from "next/image";
 import { auth, signOut, signIn } from "@/auth";
 import { BadgePlus, LogOut } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import AnimatedBackground from "./AnimatedBackground";
 
 const Navbar = async () => {
   const session = await auth();
 
   return (
-    <header className="px-5 py-3 bg-white shadow-sm font-work-sans">
-      <nav className="flex justify-between items-center">
+    <header className="relative px-5 py-3 bg-white/80 shadow-sm font-work-sans backdrop-blur-sm">
+      <AnimatedBackground />
+      <nav className="flex justify-between items-center relative z-10">
         <Link href="/">
           <Image src="/logo.png" alt="logo" width={144} height={30} />
         </Link>
@@ -25,7 +27,6 @@ const Navbar = async () => {
               <form
                 action={async () => {
                   "use server";
-
                   await signOut({ redirectTo: "/" });
                 }}
               >
@@ -49,7 +50,6 @@ const Navbar = async () => {
             <form
               action={async () => {
                 "use server";
-
                 await signIn("github");
               }}
             >

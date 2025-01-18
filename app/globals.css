@@ -278,3 +278,20 @@
 .w-md-editor-toolbar {
   padding: 10px !important;
 }
+
+@keyframes letterAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) rotate(var(--rotation));
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px) rotate(var(--rotation));
+  }
+}
