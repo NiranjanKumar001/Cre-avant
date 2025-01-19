@@ -4,18 +4,6 @@ Cre-Avant is an innovative platform dedicated to transforming ideas into recogni
 
 [![Screenshot-2025-01-19-073929.png](https://i.postimg.cc/RZQLGdb0/Screenshot-2025-01-19-073929.png)](https://postimg.cc/hXvmtLnF)
 
-## Features
-
-- **Innovation Hub**: Supports the development of groundbreaking ideas and technologies.
-- **Tech Ventures**: Assists in launching and scaling tech startups.
-- **Future Labs**: Offers experimental spaces for cutting-edge technologies.
-- **Digital Dreams**: Facilitates the realization of digital projects from concept to execution.
-- **Next Gen AI Solutions**: Delivers advanced AI solutions for contemporary challenges.
-- **Green Tech**: Promotes environmentally friendly technological innovations.
-- **Cloud Nine**: Provides reliable cloud-based services for various applications.
-- **Data Driven**: Implements data-centric strategies for effective decision-making.
-- **Web Works**: Specializes in modern web development and design.
-- **Mobile First**: Prioritizes mobile-friendly solutions to meet user needs.
 
 [![Screenshot-2025-01-19-075656.png](https://i.postimg.cc/Px2Srykx/Screenshot-2025-01-19-075656.png)](https://postimg.cc/N926d1Fq)
 
