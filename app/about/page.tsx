@@ -1,119 +1,61 @@
 'use client';
 
 import React from 'react';
-import './page.css';
 
 export default function AboutPage() {
   return (
-    <div className='about-page'>
-      <section className='about-hero'>
-        <div className='img'>
-          <img src='./portraits/portrait1.jpg' alt=''/>
-        </div>
-        <div className='about-nav'>
-          <p>Design</p>
-          <p>Chill</p>
-          <p>Sleep</p>
-          <p>Code</p>
-        </div>
-      </section>
-
-
-      <section className='about-projects'>
-        <div className='img'>
-          <img src='./portraits/portrait2.jpg' alt=''/>
-        </div>
-        <div className='about-projects-brief'>
-          <p> thsi is just for fun let do some fun design with complex ui</p>
-        </div>
-
-        <div className='col projects-cover'>
-          <div className='img'>
-            <img src='./portraits/portrait4.jpg' alt=''/>
-          </div>
-        </div>
-
-        <div className='col projects-list'>
-          <div className='projects'>
-            <h1>Serendipity</h1>
-            <p>Apple music / Spotify / Youtube</p>
-          </div>
-          <div className='projects'>
-            <h1>Euphony</h1>
-            <p>Apple music / Spotify / Youtube</p>
-          </div>
-          <div className='projects'>
-            <h1>Solstice</h1>
-            <p>Apple music / Spotify / Youtube</p>
-          </div>
-          <div className='projects'>
-            <h1>Zephyr</h1>
-            <p>Apple music / Spotify / Youtube</p>
-          </div>
-        </div>
-      </section>
-
-
-      <section className='about-about'>
-        <div className='col intro'>
-          <p>Introduction</p>
-          <p>
-            I am a designer and developer with a passion for creating innovative and user-friendly experiences. With a
+    <div className="container mx-auto px-4 py-16 min-h-screen">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-4xl sm:text-5xl font-bold mb-8 text-black-200">
+          About Cre-avant
+        </h1>
+        
+        <div className="space-y-6 text-black-100">
+          <p className="text-lg leading-relaxed">
+            Welcome to Cre-avant, where creativity meets innovation. We are passionate
+            about pushing the boundaries of digital experiences and creating meaningful
+            connections through technology.
           </p>
-        </div>
-        <div className='col portrait'>
-          <div className='portrait-container'>
-            <div className='img'>
-              <img src='./portraits/portrait7.jpg' alt=''/>
-              </div>
+
+          <div className="bg-white-100 p-6 rounded-lg border-2 border-black shadow-100">
+            <h2 className="text-2xl font-semibold mb-4">Our Mission</h2>
+            <p className="text-lg">
+              To revolutionize digital experiences by combining cutting-edge technology
+              with creative design, making the web more interactive and engaging for
+              everyone.
+            </p>
           </div>
-        </div>
-      </section>
 
-
-      <section className='about-banner'>
-        <div className='img'>
-          <img src='./portraits/portrait9.jpg' alt=''/>
-        </div>
-
-        <div className='about-banner-copy'>
-          <p> what you</p>
-          <h1>About the Design</h1>
-          <p>
-            this is what it is what do to do what not to tell me something what you want to do
-          </p>
-          <button>Let’s Glow</button>
-        </div>
-      </section>
-
-
-      <section className='about-footer'>
-        <div className='col'>
-          <p>Instagram / TikTok / Discord</p>
-          <div className='footer-links'>
-            <p>Menu</p>
-            <h1>Tour</h1>
-            <h1>Projects</h1>
-            <h1>About</h1>
-            <h1>Contact</h1>
-          </div>
-        </div>
-        <div className='col'>
-          <p>
-            join the community<br/>
-            <button>Rizz</button>
-          </p>
-          <div className='shop'>
-            <div className='img'>
-              <img src='./portraits/portrait10.jpg' alt=''/>
+          <div className="grid sm:grid-cols-2 gap-6 mt-8">
+            <div className="bg-white p-6 rounded-lg border-2 border-black shadow-100">
+              <h3 className="text-xl font-semibold mb-3">Innovation</h3>
+              <p>
+                We constantly explore new technologies and creative approaches to
+                deliver unique digital experiences.
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg border-2 border-black shadow-100">
+              <h3 className="text-xl font-semibold mb-3">Creativity</h3>
+              <p>
+                Our team combines artistic vision with technical expertise to create
+                memorable digital solutions.
+              </p>
             </div>
           </div>
 
-          <p>
-            Spotify / Apple Music / Youtube
-          </p>
+          <div className="mt-12 bg-primary-100 p-8 rounded-lg border-2 border-black shadow-200">
+            <h2 className="text-2xl font-semibold mb-4">Let's Create Together</h2>
+            <p className="text-lg mb-4">
+              We're always excited to collaborate on new projects and push the
+              boundaries of what's possible on the web.
+            </p>
+            <button className="bg-primary text-white px-6 py-2 rounded-full font-medium hover:scale-105 transition-transform duration-300">
+              Get in Touch
+            </button>
+          </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }

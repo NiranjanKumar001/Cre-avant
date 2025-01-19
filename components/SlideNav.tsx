@@ -29,7 +29,7 @@ const SlideNav: React.FC<SlideNavProps> = ({ onNavigate }) => {
   };
 
   return (
-    <nav className="fixed top-2 sm:top-0 left-1/2 -translate-x-1/2 z-50 animate-slide-down">
+    <nav className="slide-nav fixed top-2 sm:top-0 left-1/2 -translate-x-1/2 z-50 animate-slide-down">
       <div className="bg-white max-sm:rounded-full max-sm:border-2 sm:rounded-b-[20px] sm:border-[3px] border-black px-4 sm:px-8 py-1.5 shadow-md backdrop-blur-sm">
         <ul className="flex justify-center items-center gap-4 sm:gap-6 font-work-sans">
           <li>
