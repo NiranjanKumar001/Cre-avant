@@ -4,7 +4,7 @@ import { auth, signOut, signIn } from "@/auth";
 import { BadgePlus, LogOut } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import AnimatedBackground from "./AnimatedBackground";
-import SlideNav from "./SlideNav";
+
 
 const Navbar = async () => {
   const session = await auth();
@@ -67,7 +67,6 @@ const Navbar = async () => {
           )}
         </div>
       </nav>
-      <SlideNav/>
     </header>
   );
 };
