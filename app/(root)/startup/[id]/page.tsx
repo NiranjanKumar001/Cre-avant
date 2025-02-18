@@ -22,14 +22,20 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params; // Properly await params here.
 
   // Fetch data in parallel and ensure correct destructuring.
+
   const [post, editorPosts] = await Promise.all([
-    client.fetch(STARTUP_BY_ID_QUERY, { id }).catch(() => null), // Handle fetch errors safely.
+    client.fetch(STARTUP_BY_ID_QUERY, { id }).catch(() => null), // handle the fetch properly
     client.fetch(PLAYLIST_BY_SLUG_QUERY, { slug: "editor-picks-new" }).catch(() => []),
   ]);
 
-  if (!post) return notFound(); // Return 404 if the post is not found.
+  //return 404 if the post not found.
 
-  const parsedContent = md.render(post?.pitch || ""); // Ensure no null reference.
+  if (!post) return notFound(); 
+
+
+  //no null reference
+
+  const parsedContent = md.render(post?.pitch || ""); 
 
   return (
     <>
@@ -40,6 +46,9 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
       </section>
 
       <section className="section_container">
+
+        {/* error because next js uses the <Image>  </Image> which are more rich in features thats why using the img gives errror because this in built option */}
+        
         <img
           src={post.image}
           alt="thumbnail"
@@ -53,7 +62,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
               className="flex gap-2 items-center mb-3"
             >
               <Image
-                src={post.author?.image || "/default-avatar.png"} // Fallback to avoid null.
+                src={post.author?.image || "/default-avatar.png"} // Fallback to avoid Null.
                 alt="avatar"
                 width={64}
                 height={64}
