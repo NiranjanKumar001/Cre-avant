@@ -1,58 +1,64 @@
-import { auth } from "@/auth";
-import { client } from "@/sanity/lib/client";
-import { AUTHOR_BY_ID_QUERY } from "@/sanity/lib/queries";
-import { notFound } from "next/navigation";
-import Image from "next/image";
-import UserStartups from "@/components/UserStartups";
-import { Suspense } from "react";
-import { StartupCardSkeleton } from "@/components/StartupCard";
+// app/user/[id]/page.tsx
 
-export const experimental_ppr = true;
+import { auth } from "@/auth"
+import { client } from "@/sanity/lib/client"
+import { notFound } from "next/navigation"
+import UserStartups from "@/components/UserStartups"
+import { Suspense } from "react"
+import { StartupCardSkeleton } from "@/components/StartupCard"
+import ProfileCard from "@/components/ProfileCard"
 
-const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
-  const id = (await params).id;
-  const session = await auth();
+interface PageProps {
+  params: {
+    id: string
+  }
+}
 
-  const user = await client.fetch(AUTHOR_BY_ID_QUERY, { id });
-  if (!user) return notFound();
+export default async function Page({ params }: PageProps) {
+  const id = params.id
+  const session = await auth()
+  
+  // Fetch user data
+  const user = await client.fetch(`
+    *[_type == "user" && _id == $id][0]{
+      _id,
+      name,
+      image,
+      username,
+      bio
+    }
+  `, { id })
+  
+  if (!user) return notFound()
 
+  const startups = await client.fetch(`
+    *[_type == "startup" && author._ref == $userId] | order(_createdAt desc) {
+      _id,
+      title,
+      description,
+      _createdAt
+    }
+  `, { userId: id })
+  
   return (
-    <>
-      <section className="profile_container">
-        <div className="profile_card">
-          <div className="profile_title">
-            <h3 className="text-24-black uppercase text-center line-clamp-1">
-              {user.name}
-            </h3>
-          </div>
-
-          <Image
-            src={user.image}
-            alt={user.name}
-            width={220}
-            height={220}
-            className="profile_image"
-          />
-
-          <p className="text-30-extrabold mt-7 text-center">
-            @{user?.username}
-          </p>
-          <p className="mt-1 text-center text-14-normal">{user?.bio}</p>
-        </div>
-
-        <div className="flex-1 flex flex-col gap-5 lg:-mt-5">
-          <p className="text-30-bold">
-            {session?.id === id ? "Your" : "All"} Startups
-          </p>
-          <ul className="card_grid-sm">
-            <Suspense fallback={<StartupCardSkeleton />}>
-              <UserStartups id={id} />
-            </Suspense>
-          </ul>
-        </div>
-      </section>
-    </>
-  );
-};
-
-export default Page;
+    <section className="max-w-7xl mx-auto px-4 py-10">
+      <ProfileCard 
+        user={user} 
+        session={session} 
+        isOwnProfile={session?.id === id}
+        startups={startups}
+      />
+      
+      <div className="mt-10">
+        <h2 className="text-30-bold mb-6">
+          {session?.id === id ? "Your" : "All"} Startups
+        </h2>
+        <ul className="card_grid-sm">
+          <Suspense fallback={<StartupCardSkeleton />}>
+            <UserStartups id={id} />
+          </Suspense>
+        </ul>
+      </div>
+    </section>
+  )
+}

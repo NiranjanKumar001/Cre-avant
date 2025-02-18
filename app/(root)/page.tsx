@@ -22,7 +22,7 @@ export default async function Home({
 
   return (
     <>
-      <section className="pink_container">
+      <section className="wide_container">
         {/* <h1 className="heading">
           Lets Pitch <br />
           Connect You Together
