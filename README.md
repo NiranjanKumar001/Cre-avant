@@ -1,37 +1,27 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# <span style="color: #3498db;">Cre-Avant</span>
 
-## Getting Started
+Cre-Avant is an innovative platform dedicated to transforming ideas into recognized entities. It provides a comprehensive ecosystem for startups and tech ventures, enabling them to scale and achieve their goals effectively.
 
-First, run the development server:
+[![Screenshot-2025-01-19-073929.png](https://i.postimg.cc/RZQLGdb0/Screenshot-2025-01-19-073929.png)](https://postimg.cc/hXvmtLnF)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[![Screenshot-2025-01-19-075656.png](https://i.postimg.cc/Px2Srykx/Screenshot-2025-01-19-075656.png)](https://postimg.cc/N926d1Fq)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## <span style="color: #e74c3c;">Tech Stack</span>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+![Next.js](https://img.shields.io/badge/Next.js-%23000000?style=flat&logo=next.js&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-%2338B2AC?style=flat&logo=tailwind-css&logoColor=white)
+![React](https://img.shields.io/badge/React-%2320232a?style=flat&logo=react&logoColor=%2361DAFB)
+![Node.js](https://img.shields.io/badge/Node.js-%2343853D?style=flat&logo=node.js&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-%23000000?style=flat&logo=vercel&logoColor=white)
+![Sanity](https://img.shields.io/badge/Sanity-%23F7F7F7?style=flat&logo=sanity&logoColor=%23624DFF)
 
-## Learn More
+## <span style="color: #2ecc71;">Contact</span>
 
-To learn more about Next.js, take a look at the following resources:
+For more information, visit the official website: [Cre-Avant](https://cre-avant.vercel.app)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+For inquiries or support, use the contact page on the website.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-auto-genrated 
+*Includes future plans too.*
