@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import Image from 'next/image';
 import { client } from "@/sanity/lib/client";
 import {
   PLAYLIST_BY_SLUG_QUERY,
@@ -7,7 +8,6 @@ import {
 import { notFound } from "next/navigation";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
-import Image from "next/image";
 
 import markdownit from "markdown-it";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -33,7 +33,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   return (
     <>
-      <section className="pink_container !min-h-[230px]">
+      <section className="wide_container !min-h-[230px]">
         <p className="tag">{formatDate(post?._createdAt)}</p>
         <h1 className="heading">{post.title}</h1>
         <p className="sub-heading !max-w-5xl">{post.description}</p>
