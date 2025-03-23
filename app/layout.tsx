@@ -67,6 +67,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    // for hydrationwarning added this suppressHydrationWarning
     <html lang="en" suppressHydrationWarning>
       <body className={workSans.variable}>
           <SlideNav />
